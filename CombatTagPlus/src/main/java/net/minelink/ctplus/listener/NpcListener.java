@@ -63,14 +63,7 @@ public final class NpcListener implements Listener {
 
         // NPC died, remove player's combat tag
         plugin.getTagManager().untag(id);
-
-        // Despawn NPC on the next tick
-        Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
-            @Override
-            public void run() {
-                plugin.getNpcManager().despawn(npc, NpcDespawnReason.DEATH);
-            }
-        });
+        plugin.getNpcManager().despawn(npc, NpcDespawnReason.DEATH);
     }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.NORMAL)
